@@ -5,15 +5,31 @@ using System;
 
 namespace PixelArtEditor.Core.Tools
 {
+    /// <summary>
+    /// A tool for selecting a rectangular area on the canvas.
+    /// </summary>
     public class RectangleSelectTool : ITool
     {
+        /// <summary>
+        /// Gets the name of the tool.
+        /// </summary>
         public string Name => "Rectangle Select";
         private bool _isSelecting;
         private SKPointI _startPoint;
         private SKPointI _endPoint;
         
+        /// <summary>
+        /// Occurs when the selection rectangle has changed.
+        /// </summary>
         public event Action<SKRectI> SelectionChanged;
 
+        /// <summary>
+        /// Handles the mouse down event.
+        /// </summary>
+        /// <param name="layer">The active layer.</param>
+        /// <param name="x">The x-coordinate of the mouse, in pixel space.</param>
+        /// <param name="y">The y-coordinate of the mouse, in pixel space.</param>
+        /// <param name="color">The currently selected color.</param>
         public void OnMouseDown(Layer layer, int x, int y, SKColor color)
         {
             _isSelecting = true;
@@ -22,6 +38,13 @@ namespace PixelArtEditor.Core.Tools
             NotifySelectionChanged();
         }
 
+        /// <summary>
+        /// Handles the mouse move event.
+        /// </summary>
+        /// <param name="layer">The active layer.</param>
+        /// <param name="x">The x-coordinate of the mouse, in pixel space.</param>
+        /// <param name="y">The y-coordinate of the mouse, in pixel space.</param>
+        /// <param name="color">The currently selected color.</param>
         public void OnMouseMove(Layer layer, int x, int y, SKColor color)
         {
             if (_isSelecting)
@@ -31,6 +54,13 @@ namespace PixelArtEditor.Core.Tools
             }
         }
 
+        /// <summary>
+        /// Handles the mouse up event.
+        /// </summary>
+        /// <param name="layer">The active layer.</param>
+        /// <param name="x">The x-coordinate of the mouse, in pixel space.</param>
+        /// <param name="y">The y-coordinate of the mouse, in pixel space.</param>
+        /// <param name="color">The currently selected color.</param>
         public void OnMouseUp(Layer layer, int x, int y, SKColor color)
         {
             if (_isSelecting)
@@ -41,12 +71,19 @@ namespace PixelArtEditor.Core.Tools
             }
         }
 
+        /// <summary>
+        /// Notifies subscribers that the selection has changed.
+        /// </summary>
         private void NotifySelectionChanged()
         {
             var rect = GetSelectionRect();
             SelectionChanged?.Invoke(rect);
         }
 
+        /// <summary>
+        /// Gets the current selection rectangle.
+        /// </summary>
+        /// <returns>The selection rectangle.</returns>
         public SKRectI GetSelectionRect()
         {
             int left = Math.Min(_startPoint.X, _endPoint.X);
