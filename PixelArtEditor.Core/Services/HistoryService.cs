@@ -4,40 +4,46 @@ using System.Collections.Generic;
 
 namespace PixelArtEditor.Core.Services
 {
+    /// <summary>
+    /// Manages the command history for undo and redo functionality.
+    /// This class implements the IHistoryService interface.
+    /// </summary>
     public class HistoryService : IHistoryService
     {
         private readonly Stack<ICommand> _undoStack = new Stack<ICommand>();
         private readonly Stack<ICommand> _redoStack = new Stack<ICommand>();
 
+        /// <summary>
+        /// Occurs when the command history has changed.
+        /// </summary>
         public event Action HistoryChanged;
 
+        /// <summary>
+        /// Gets a value indicating whether an undo operation can be performed.
+        /// </summary>
         public bool CanUndo => _undoStack.Count > 0;
+
+        /// <summary>
+        /// Gets a value indicating whether a redo operation can be performed.
+        /// </summary>
         public bool CanRedo => _redoStack.Count > 0;
 
+        /// <summary>
+        /// Executes a command and adds it to the history.
+        /// </summary>
+        /// <param name="command">The command to execute.</param>
         public void Execute(ICommand command)
         {
-            // We assume the command has already been executed by the tool/action *before* being added here,
-            // OR we execute it here.
-            // Usually for tools, the tool does the work (interactive), then pushes the command.
-            // For one-shot actions (like "Delete Layer"), we might execute it here.
-            // Let's adopt the pattern: Command is created *after* the action is complete (for tools),
-            // or Command.Execute() is called for discrete actions.
-            
-            // However, to be consistent, let's say:
-            // If it's a tool stroke, the change is already applied to the bitmap. We just push the command.
-            // If it's a menu action, we might construct it and call Execute.
-            
-            // To support both, we can have a Push(ICommand) method.
-            // But standard Command pattern is Execute(ICommand).
-            
-            // Let's stick to: The caller is responsible for the *initial* execution if it's interactive.
-            // But if we want to support "Redo", the command must know how to Execute.
-            
             _undoStack.Push(command);
             _redoStack.Clear();
             HistoryChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Pushes a command that has already been executed onto the history stack.
+        /// This is useful for commands like tool strokes that are executed interactively.
+        /// </summary>
+        /// <param name="command">The command to push.</param>
         public void Push(ICommand command)
         {
             _undoStack.Push(command);
@@ -45,6 +51,9 @@ namespace PixelArtEditor.Core.Services
             HistoryChanged?.Invoke();
         }
 
+        /// <summary>
+        /// Undoes the last executed command.
+        /// </summary>
         public void Undo()
         {
             if (_undoStack.Count > 0)
@@ -56,6 +65,9 @@ namespace PixelArtEditor.Core.Services
             }
         }
 
+        /// <summary>
+        /// Redoes the last undone command.
+        /// </summary>
         public void Redo()
         {
             if (_redoStack.Count > 0)

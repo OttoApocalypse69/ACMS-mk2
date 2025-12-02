@@ -6,45 +6,82 @@ using System.Windows.Controls;
 
 namespace PixelArtEditor.UI.Views
 {
+    /// <summary>
+    /// Interaction logic for ColorPaletteView.xaml
+    /// This view allows the user to select a color from a palette or by using sliders and text boxes.
+    /// </summary>
     public partial class ColorPaletteView : UserControl
     {
         private bool _isUpdating = false;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ColorPaletteView"/> class.
+        /// </summary>
         public ColorPaletteView()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the HueSlider.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OnHueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (_isUpdating || DataContext == null) return;
             UpdateColorFromHSV();
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the SaturationSlider.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OnSaturationChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (_isUpdating || DataContext == null) return;
             UpdateColorFromHSV();
         }
 
+        /// <summary>
+        /// Handles the ValueChanged event of the ValueSlider.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (_isUpdating || DataContext == null) return;
             UpdateColorFromHSV();
         }
 
+        /// <summary>
+        /// Handles the TextChanged event of the RGB text boxes.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OnRgbChanged(object sender, TextChangedEventArgs e)
         {
             if (_isUpdating || DataContext == null) return;
             UpdateColorFromRGB();
         }
 
+        /// <summary>
+        /// Handles the TextChanged event of the Hex text box.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OnHexChanged(object sender, TextChangedEventArgs e)
         {
             if (_isUpdating || DataContext == null) return;
             UpdateColorFromHex();
         }
 
+        /// <summary>
+        /// Handles the SelectionChanged event of the color palette.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void OnPaletteColorSelected(object sender, SelectionChangedEventArgs e)
         {
             if (DataContext is ColorPaletteViewModel vm && vm.SelectedColor != SKColor.Empty)
@@ -53,6 +90,9 @@ namespace PixelArtEditor.UI.Views
             }
         }
 
+        /// <summary>
+        /// Updates the selected color from the HSV sliders.
+        /// </summary>
         private void UpdateColorFromHSV()
         {
             float h = (float)HueSlider.Value;
@@ -71,6 +111,9 @@ namespace PixelArtEditor.UI.Views
             _isUpdating = false;
         }
 
+        /// <summary>
+        /// Updates the selected color from the RGB text boxes.
+        /// </summary>
         private void UpdateColorFromRGB()
         {
             if (!byte.TryParse(RedBox.Text, out byte r)) r = 0;
@@ -89,6 +132,9 @@ namespace PixelArtEditor.UI.Views
             _isUpdating = false;
         }
 
+        /// <summary>
+        /// Updates the selected color from the Hex text box.
+        /// </summary>
         private void UpdateColorFromHex()
         {
             string hex = HexBox.Text.Trim();
@@ -110,6 +156,10 @@ namespace PixelArtEditor.UI.Views
             }
         }
 
+        /// <summary>
+        /// Updates all the color controls from the selected color.
+        /// </summary>
+        /// <param name="color">The color to update the controls with.</param>
         private void UpdateControlsFromColor(SKColor color)
         {
             _isUpdating = true;
@@ -119,6 +169,10 @@ namespace PixelArtEditor.UI.Views
             _isUpdating = false;
         }
 
+        /// <summary>
+        /// Updates the HSV sliders from the selected color.
+        /// </summary>
+        /// <param name="color">The color to update the sliders with.</param>
         private void UpdateHSVFromColor(SKColor color)
         {
             color.ToHsv(out float h, out float s, out float v);
@@ -127,6 +181,10 @@ namespace PixelArtEditor.UI.Views
             ValueSlider.Value = v;
         }
 
+        /// <summary>
+        /// Updates the RGB text boxes from the selected color.
+        /// </summary>
+        /// <param name="color">The color to update the text boxes with.</param>
         private void UpdateRGBFromColor(SKColor color)
         {
             RedBox.Text = color.Red.ToString();
@@ -134,6 +192,10 @@ namespace PixelArtEditor.UI.Views
             BlueBox.Text = color.Blue.ToString();
         }
 
+        /// <summary>
+        /// Updates the Hex text box from the selected color.
+        /// </summary>
+        /// <param name="color">The color to update the text box with.</param>
         private void UpdateHexFromColor(SKColor color)
         {
             HexBox.Text = $"{color.Red:X2}{color.Green:X2}{color.Blue:X2}";

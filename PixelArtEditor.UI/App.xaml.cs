@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using PixelArtEditor.UI.ViewModels;
 using PixelArtEditor.Core.Services;
 using PixelArtEditor.Core.Interfaces;
@@ -7,27 +7,43 @@ using System.Windows;
 
 namespace PixelArtEditor.UI
 {
+    /// <summary>
+    /// Interaction logic for App.xaml
+    /// This is the main application class, responsible for configuring services and starting the application.
+    /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// Gets the current instance of the application.
+        /// </summary>
         public new static App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets the service provider for the application.
+        /// </summary>
         public IServiceProvider Services { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="App"/> class.
+        /// </summary>
         public App()
         {
             Services = ConfigureServices();
         }
 
+        /// <summary>
+        /// Configures the services for the application.
+        /// </summary>
+        /// <returns>The configured service provider.</returns>
         private static IServiceProvider ConfigureServices()
         {
             var services = new ServiceCollection();
 
-            // Services
             services.AddSingleton<IHistoryService, HistoryService>();
             services.AddSingleton<IRenderer, CanvasRenderer>();
             services.AddSingleton<IToolService, ToolService>();
-            services.AddSingleton<ILayerService>(provider => new LayerService(32, 32)); // Default size for now
+            services.AddSingleton<ILayerService>(provider => new LayerService(32, 32));
 
-            // ViewModels with explicit dependency resolution
             services.AddSingleton<ColorPaletteViewModel>();
             services.AddSingleton<ToolbarViewModel>(provider => new ToolbarViewModel(
                 provider.GetRequiredService<IToolService>(),
@@ -50,7 +66,6 @@ namespace PixelArtEditor.UI
                 provider.GetRequiredService<LayerViewModel>()
             ));
 
-            // Views
             services.AddSingleton<MainWindow>(provider => new MainWindow(
                 provider.GetRequiredService<MainViewModel>()
             ));
@@ -58,6 +73,10 @@ namespace PixelArtEditor.UI
             return services.BuildServiceProvider();
         }
 
+        /// <summary>
+        /// Handles the Startup event.
+        /// </summary>
+        /// <param name="e">The event arguments.</param>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -77,6 +96,11 @@ namespace PixelArtEditor.UI
             }
         }
 
+        /// <summary>
+        /// Handles unhandled exceptions.
+        /// </summary>
+        /// <param name="sender">The object that raised the event.</param>
+        /// <param name="e">The event arguments.</param>
         private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
             MessageBox.Show($"Unhandled Error: {e.Exception.Message}\n{e.Exception.StackTrace}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
