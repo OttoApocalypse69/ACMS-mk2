@@ -11,11 +11,20 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/> <!-- Undo/Redo -->
             <RowDefinition Height="*"/>    <!-- Tools -->
+            <RowDefinition Height="Auto"/> <!-- Pencil size -->
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
-            <Button Command="{Binding UndoCommand}" Content="↶" Width="22" Height="22" Margin="1" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Undo" FontSize="14"/>
-            <Button Command="{Binding RedoCommand}" Content="↷" Width="22" Height="22" Margin="1" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Redo" FontSize="14"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,6">
+            <Button Command="{Binding UndoCommand}" Width="26" Height="26" Margin="2"
+                    Background="#252933" BorderBrush="#3A3F47" BorderThickness="1" ToolTip="Undo">
+                <Path Data="M15,8 L9,8 L9,4 L3,10 L9,16 L9,12 L15,12 Z"
+                      Fill="#E0E4FF" Stretch="Uniform"/>
+            </Button>
+            <Button Command="{Binding RedoCommand}" Width="26" Height="26" Margin="2"
+                    Background="#252933" BorderBrush="#3A3F47" BorderThickness="1" ToolTip="Redo">
+                <Path Data="M9,8 L15,8 L15,4 L21,10 L15,16 L15,12 L9,12 Z"
+                      Fill="#E0E4FF" Stretch="Uniform"/>
+            </Button>
         </StackPanel>
 
         <ListBox Grid.Row="1" ItemsSource="{Binding Tools}" SelectedItem="{Binding ActiveTool}" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center">
@@ -115,5 +124,20 @@
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
+
+        <!-- Pencil size selector -->
+        <StackPanel Grid.Row="2" Margin="4,8" HorizontalAlignment="Center">
+            <TextBlock Text="Pencil Size" Foreground="#AAAAAA" FontSize="10" HorizontalAlignment="Center" Margin="0,0,0,2"/>
+            <ComboBox Width="60"
+                      SelectedValue="{Binding PencilSize, Mode=TwoWay}"
+                      SelectedValuePath="Tag"
+                      Background="#252933" Foreground="#E0E4FF"
+                      BorderBrush="#3A3F47" BorderThickness="1">
+                <ComboBoxItem Content="1 px" Tag="1"/>
+                <ComboBoxItem Content="2 px" Tag="2"/>
+                <ComboBoxItem Content="3 px" Tag="3"/>
+                <ComboBoxItem Content="4 px" Tag="4"/>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -1,8 +1,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
-using PixelArtEditor.Core.Interfaces;
-using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.Input;
 using PixelArtEditor.Core.Interfaces;
+using PixelArtEditor.Core.Tools;
 using System.Collections.Generic;
 
 namespace PixelArtEditor.UI.ViewModels
@@ -14,6 +13,9 @@ namespace PixelArtEditor.UI.ViewModels
 
         public IEnumerable<ITool> Tools => _toolService.AvailableTools;
 
+        [ObservableProperty]
+        private int _pencilSize = 1;
+
         public ITool ActiveTool
         {
             get => _toolService.ActiveTool;
@@ -23,6 +25,7 @@ namespace PixelArtEditor.UI.ViewModels
                 {
                     _toolService.ActiveTool = value;
                     OnPropertyChanged();
+                    ApplyPencilSize();
                 }
             }
         }
@@ -37,6 +40,24 @@ namespace PixelArtEditor.UI.ViewModels
                 UndoCommand.NotifyCanExecuteChanged();
                 RedoCommand.NotifyCanExecuteChanged();
             };
+
+            ApplyPencilSize();
+        }
+
+        partial void OnPencilSizeChanged(int value)
+        {
+            ApplyPencilSize();
+        }
+
+        private void ApplyPencilSize()
+        {
+            foreach (var tool in _toolService.AvailableTools)
+            {
+                if (tool is PencilTool pencil)
+                {
+                    pencil.Size = _pencilSize < 1 ? 1 : _pencilSize;
+                }
+            }
         }
 
         [RelayCommand]

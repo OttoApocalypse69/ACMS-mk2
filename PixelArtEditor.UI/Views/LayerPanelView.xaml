@@ -21,9 +21,23 @@
             <TextBlock Text="LAYERS" Foreground="#CCCCCC" FontWeight="SemiBold" FontSize="11"/>
         </Border>
 
-        <!-- Symmetry Panel -->
+        <!-- Canvas & Symmetry Panel -->
         <Border Grid.Row="1" Background="#252526" BorderBrush="#3E3E42" BorderThickness="0,0,0,1" Padding="8">
             <StackPanel>
+                <!-- Canvas Size (custom) -->
+                <TextBlock Text="CANVAS" Foreground="#AAAAAA" FontSize="9" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
+                    <TextBlock Text="W" Foreground="#888888" FontSize="10" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <TextBox Width="40" Text="{Binding NewCanvasWidth, UpdateSourceTrigger=PropertyChanged}" 
+                             Background="#1E1E1E" Foreground="#DDDDDD" BorderBrush="#555555" BorderThickness="1" Margin="0,0,6,0"/>
+                    <TextBlock Text="H" Foreground="#888888" FontSize="10" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <TextBox Width="40" Text="{Binding NewCanvasHeight, UpdateSourceTrigger=PropertyChanged}" 
+                             Background="#1E1E1E" Foreground="#DDDDDD" BorderBrush="#555555" BorderThickness="1" Margin="0,0,6,0"/>
+                    <Button Command="{Binding ResizeCanvasCommand}" Content="Apply" Width="50" Height="22"
+                            Background="#007ACC" Foreground="White" BorderThickness="0" FontSize="10"/>
+                </StackPanel>
+
+                <!-- Symmetry Panel -->
                 <TextBlock Text="SYMMETRY" Foreground="#AAAAAA" FontSize="9" FontWeight="SemiBold" Margin="0,4,0,4"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="⊙" Width="32" Height="32" Margin="0,0,4,0" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="None" FontSize="14" Click="SymmetryNone_Click"/>

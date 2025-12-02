@@ -12,6 +12,7 @@ namespace PixelArtEditor.UI.Views
     {
         private bool _isUpdating = false;
         private WriteableBitmap _svBitmap;
+        private const int SvSize = 140;
         private float _h = 0f;
         private float _s = 1f;
         private float _v = 1f;
@@ -101,10 +102,14 @@ namespace PixelArtEditor.UI.Views
 
         private void CreateOrUpdateSvBitmap()
         {
-            int width = (int)Math.Max(1, SvImage.ActualWidth > 0 ? SvImage.ActualWidth : 140);
-            int height = (int)Math.Max(1, SvImage.ActualHeight > 0 ? SvImage.ActualHeight : 140);
+            int width = SvSize;
+            int height = SvSize;
 
-            _svBitmap = new WriteableBitmap(width, height, 96, 96, System.Windows.Media.PixelFormats.Bgra32, null);
+            if (_svBitmap == null || _svBitmap.PixelWidth != width || _svBitmap.PixelHeight != height)
+            {
+                _svBitmap = new WriteableBitmap(width, height, 96, 96, System.Windows.Media.PixelFormats.Bgra32, null);
+                SvImage.Source = _svBitmap;
+            }
 
             int stride = width * 4;
             byte[] pixels = new byte[height * stride];
@@ -123,9 +128,7 @@ namespace PixelArtEditor.UI.Views
                     pixels[index + 3] = c.Alpha;
                 }
             }
-
             _svBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
-            SvImage.Source = _svBitmap;
 
             UpdateMarkerPosition();
         }

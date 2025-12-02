@@ -34,42 +34,9 @@
                 <!-- Menu bar -->
                 <Menu Grid.Column="1" Background="Transparent" BorderThickness="0" Foreground="#C5CAE9"
                       VerticalAlignment="Center" FontSize="12">
-                    <Menu.Resources>
-                        <Style TargetType="MenuItem">
-                            <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="BorderBrush" Value="Transparent"/>
-                            <Setter Property="Padding" Value="10,4"/>
-                            <Setter Property="Margin" Value="0"/>
-                            <Setter Property="Foreground" Value="#C5CAE9"/>
-                            <Setter Property="OverridesDefaultStyle" Value="True"/>
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="MenuItem">
-                                        <Border Background="{TemplateBinding Background}" CornerRadius="3">
-                                            <ContentPresenter ContentSource="Header" Margin="2,0"/>
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsHighlighted" Value="True">
-                                                <Setter Property="Background" Value="#323744"/>
-                                            </Trigger>
-                                            <Trigger Property="IsSubmenuOpen" Value="True">
-                                                <Setter Property="Background" Value="#3C4254"/>
-                                            </Trigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </Menu.Resources>
-
                     <MenuItem Header="File">
-                        <MenuItem Header="_New" Command="{Binding NewDocumentCommand}"/>
-                        <MenuItem Header="_Open..." Command="{Binding OpenDocumentCommand}"/>
-                        <Separator/>
-                        <MenuItem Header="_Import..." Command="{Binding ImportImageCommand}"/>
-                        <Separator/>
-                        <MenuItem Header="_Save" Command="{Binding SaveDocumentCommand}"/>
-                        <MenuItem Header="E_xport PNG..." Command="{Binding LayerViewModel.ExportCanvasCommand}"/>
+                        <MenuItem Header="Import Image..." Command="{Binding LayerViewModel.ImportImageCommand}"/>
+                        <MenuItem Header="Export PNG..." Command="{Binding LayerViewModel.ExportCanvasCommand}"/>
                         <Separator/>
                         <MenuItem Header="Canvas Size">
                             <MenuItem Header="16 x 16" Command="{Binding LayerViewModel.ResizeCanvas16Command}"/>
@@ -77,7 +44,7 @@
                             <MenuItem Header="64 x 64" Command="{Binding LayerViewModel.ResizeCanvas64Command}"/>
                         </MenuItem>
                         <Separator/>
-                        <MenuItem Header="E_xit" Command="{Binding ExitApplicationCommand}"/>
+                        <MenuItem Header="Exit" Command="{Binding ExitApplicationCommand}"/>
                     </MenuItem>
 
                     <MenuItem Header="Edit">
@@ -86,9 +53,9 @@
                     </MenuItem>
                 </Menu>
 
-                <!-- Zoom indicator placeholder -->
+                <!-- Zoom indicator -->
                 <Border Grid.Column="3" CornerRadius="4" Background="#2B2F37" Padding="8,4" Margin="0,0,4,0" VerticalAlignment="Center">
-                    <TextBlock Text="Zoom 100%" Foreground="#CED0D6"/>
+                    <TextBlock Text="{Binding CanvasViewModel.Zoom, StringFormat=Zoom {0:0.0}x}" Foreground="#CED0D6"/>
                 </Border>
             </Grid>
         </Border>

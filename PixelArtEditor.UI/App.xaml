@@ -45,7 +45,7 @@
 
         <!-- Straight line -->
         <PathGeometry x:Key="LineIcon">
-            M5,19 L19,5
+            M6,18 L10,18 L14,6 L18,6
         </PathGeometry>
 
         <!-- Rectangle outline -->

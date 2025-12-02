@@ -58,7 +58,7 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Saturation / Value square -->
-                <Border Grid.Column="0" Height="140" CornerRadius="4" BorderBrush="#444" BorderThickness="1" Background="#000">
+                <Border Grid.Column="0" Height="140" Width="140" CornerRadius="4" BorderBrush="#444" BorderThickness="1" Background="#000">
                     <Grid>
                         <Image x:Name="SvImage"
                                Stretch="Fill"

@@ -8,6 +8,7 @@ namespace PixelArtEditor.Core.Tools
     public class PencilTool : ITool
     {
         public string Name => "Pencil";
+        public int Size { get; set; } = 1;
         private bool _isDrawing;
         private SKBitmap _snapshot;
         private int _lastX;
@@ -63,43 +64,55 @@ namespace PixelArtEditor.Core.Tools
 
         private void DrawPixel(Layer layer, int x, int y, SKColor color)
         {
-            if (x >= 0 && x < layer.Bitmap.Width && y >= 0 && y < layer.Bitmap.Height)
+            int half = Math.Max(1, Size) / 2;
+
+            for (int oy = -half; oy <= half; oy++)
             {
-                layer.Bitmap.SetPixel(x, y, color);
-                
-                // Apply symmetry
-                if (_symmetrySettings != null)
+                for (int ox = -half; ox <= half; ox++)
                 {
-                    int width = layer.Bitmap.Width;
-                    int height = layer.Bitmap.Height;
-                    
-                    if (_symmetrySettings.Mode == SymmetryMode.Horizontal || _symmetrySettings.Mode == SymmetryMode.Both)
-                    {
-                        int mirrorX = width - 1 - x;
-                        if (mirrorX >= 0 && mirrorX < width)
-                        {
-                            layer.Bitmap.SetPixel(mirrorX, y, color);
-                        }
-                    }
-                    
-                    if (_symmetrySettings.Mode == SymmetryMode.Vertical || _symmetrySettings.Mode == SymmetryMode.Both)
-                    {
-                        int mirrorY = height - 1 - y;
-                        if (mirrorY >= 0 && mirrorY < height)
-                        {
-                            layer.Bitmap.SetPixel(x, mirrorY, color);
-                        }
-                    }
-                    
-                    if (_symmetrySettings.Mode == SymmetryMode.Both)
-                    {
-                        int mirrorX = width - 1 - x;
-                        int mirrorY = height - 1 - y;
-                        if (mirrorX >= 0 && mirrorX < width && mirrorY >= 0 && mirrorY < height)
-                        {
-                            layer.Bitmap.SetPixel(mirrorX, mirrorY, color);
-                        }
-                    }
+                    SetPixelWithSymmetry(layer, x + ox, y + oy, color);
+                }
+            }
+        }
+
+        private void SetPixelWithSymmetry(Layer layer, int x, int y, SKColor color)
+        {
+            if (x < 0 || x >= layer.Bitmap.Width || y < 0 || y >= layer.Bitmap.Height)
+                return;
+
+            layer.Bitmap.SetPixel(x, y, color);
+
+            if (_symmetrySettings == null || _symmetrySettings.Mode == SymmetryMode.None)
+                return;
+
+            int width = layer.Bitmap.Width;
+            int height = layer.Bitmap.Height;
+
+            if (_symmetrySettings.Mode == SymmetryMode.Horizontal || _symmetrySettings.Mode == SymmetryMode.Both)
+            {
+                int mirrorX = width - 1 - x;
+                if (mirrorX >= 0 && mirrorX < width)
+                {
+                    layer.Bitmap.SetPixel(mirrorX, y, color);
+                }
+            }
+
+            if (_symmetrySettings.Mode == SymmetryMode.Vertical || _symmetrySettings.Mode == SymmetryMode.Both)
+            {
+                int mirrorY = height - 1 - y;
+                if (mirrorY >= 0 && mirrorY < height)
+                {
+                    layer.Bitmap.SetPixel(x, mirrorY, color);
+                }
+            }
+
+            if (_symmetrySettings.Mode == SymmetryMode.Both)
+            {
+                int mirrorX = width - 1 - x;
+                int mirrorY = height - 1 - y;
+                if (mirrorX >= 0 && mirrorX < width && mirrorY >= 0 && mirrorY < height)
+                {
+                    layer.Bitmap.SetPixel(mirrorX, mirrorY, color);
                 }
             }
         }

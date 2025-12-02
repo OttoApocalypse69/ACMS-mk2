@@ -120,6 +120,48 @@ namespace PixelArtEditor.UI.ViewModels
         }
 
         [RelayCommand]
+        private void ImportImage()
+        {
+            var openDialog = new OpenFileDialog
+            {
+                Filter = "Image Files|*.png;*.jpg;*.jpeg;*.bmp",
+                CheckFileExists = true,
+                Multiselect = false
+            };
+
+            if (openDialog.ShowDialog() != true)
+            {
+                return;
+            }
+
+            using var inputStream = File.OpenRead(openDialog.FileName);
+            using var imported = SKBitmap.Decode(inputStream);
+            if (imported == null)
+            {
+                return;
+            }
+
+            // Resize canvas if imported image is larger
+            int targetWidth = System.Math.Max(_layerService.Width, imported.Width);
+            int targetHeight = System.Math.Max(_layerService.Height, imported.Height);
+
+            if (targetWidth != _layerService.Width || targetHeight != _layerService.Height)
+            {
+                _layerService.Resize(targetWidth, targetHeight);
+                OnPropertyChanged(nameof(CanvasWidth));
+                OnPropertyChanged(nameof(CanvasHeight));
+                NewCanvasWidth = targetWidth;
+                NewCanvasHeight = targetHeight;
+            }
+
+            var layer = _layerService.ActiveLayer;
+            if (layer == null) return;
+
+            using var canvas = new SKCanvas(layer.Bitmap);
+            canvas.DrawBitmap(imported, 0, 0);
+        }
+
+        [RelayCommand]
         private void ExportCanvas()
         {
             var width = _layerService.Width;
