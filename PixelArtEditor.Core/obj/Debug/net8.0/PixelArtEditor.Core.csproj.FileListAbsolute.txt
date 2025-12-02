@@ -1,0 +1,24 @@
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\bin\Debug\net8.0\PixelArtEditor.Core.deps.json
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\bin\Debug\net8.0\PixelArtEditor.Core.dll
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\bin\Debug\net8.0\PixelArtEditor.Core.pdb
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.csproj.AssemblyReference.cache
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.AssemblyInfoInputs.cache
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.AssemblyInfo.cs
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.csproj.CoreCompileInputs.cache
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.dll
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\refint\PixelArtEditor.Core.dll
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.pdb
+C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.Core\obj\Debug\net8.0\ref\PixelArtEditor.Core.dll
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\bin\Debug\net8.0\PixelArtEditor.Core.deps.json
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\bin\Debug\net8.0\PixelArtEditor.Core.dll
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\bin\Debug\net8.0\PixelArtEditor.Core.pdb
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.csproj.AssemblyReference.cache
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.AssemblyInfoInputs.cache
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.AssemblyInfo.cs
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.csproj.CoreCompileInputs.cache
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.dll
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\refint\PixelArtEditor.Core.dll
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.pdb
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\ref\PixelArtEditor.Core.dll

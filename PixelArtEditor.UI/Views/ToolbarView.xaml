@@ -1,0 +1,105 @@
+<UserControl x:Class="PixelArtEditor.UI.Views.ToolbarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:PixelArtEditor.UI"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="50">
+    
+    <Grid Background="#252526">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Undo/Redo -->
+            <RowDefinition Height="*"/>    <!-- Tools -->
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5">
+            <Button Command="{Binding UndoCommand}" Content="↶" Width="22" Height="22" Margin="1" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Undo" FontSize="14"/>
+            <Button Command="{Binding RedoCommand}" Content="↷" Width="22" Height="22" Margin="1" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Redo" FontSize="14"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" ItemsSource="{Binding Tools}" SelectedItem="{Binding ActiveTool}" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center">
+            <ListBox.Resources>
+                <Style x:Key="ToolIconStyle" TargetType="Path">
+                    <Setter Property="Fill" Value="White"/>
+                    <Setter Property="Stretch" Value="Uniform"/>
+                    <Setter Property="Width" Value="20"/>
+                    <Setter Property="Height" Value="20"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="VerticalAlignment" Value="Center"/>
+                </Style>
+            </ListBox.Resources>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#333337" CornerRadius="4" Margin="2" Padding="6" Width="36" Height="36" ToolTip="{Binding Name}">
+                        <ContentControl>
+                            <ContentControl.Style>
+                                <Style TargetType="ContentControl">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Name}" Value="Pencil">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource PencilIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Name}" Value="Eraser">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource EraserIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Name}" Value="Eyedropper">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource EyedropperIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Name}" Value="Fill">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource FillIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Name}" Value="Rectangle Select">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource SelectIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="0" Padding="1">
+                                    <ContentPresenter/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#007ACC"/>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#3E3E42"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+    </Grid>
+</UserControl>

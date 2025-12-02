@@ -1,0 +1,20 @@
+﻿PixelArtEditor.UI
+
+
+winexe
+C#
+.cs
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\
+PixelArtEditor.UI
+none
+false
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\App.xaml
+6-2046425553
+
+19-106699709
+2071804032804
+MainWindow.xaml;Views\CanvasView.xaml;Views\ColorPaletteView.xaml;Views\LayerPanelView.xaml;Views\TimelineView.xaml;Views\ToolbarView.xaml;
+
+False
+

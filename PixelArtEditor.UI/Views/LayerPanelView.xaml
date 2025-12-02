@@ -1,0 +1,169 @@
+<UserControl x:Class="PixelArtEditor.UI.Views.LayerPanelView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PixelArtEditor.UI.Views"
+             xmlns:vm="clr-namespace:PixelArtEditor.UI.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="250">
+    <Grid Background="#1E1E1E">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- Header -->
+            <RowDefinition Height="Auto"/> <!-- Symmetry Panel -->
+            <RowDefinition Height="*"/>    <!-- Layer List -->
+            <RowDefinition Height="Auto"/> <!-- Properties -->
+            <RowDefinition Height="Auto"/> <!-- Action Buttons -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#252526" BorderBrush="#3E3E42" BorderThickness="0,0,0,1" Padding="8">
+            <TextBlock Text="LAYERS" Foreground="#CCCCCC" FontWeight="SemiBold" FontSize="11"/>
+        </Border>
+
+        <!-- Symmetry Panel -->
+        <Border Grid.Row="1" Background="#252526" BorderBrush="#3E3E42" BorderThickness="0,0,0,1" Padding="8">
+            <StackPanel>
+                <TextBlock Text="SYMMETRY" Foreground="#AAAAAA" FontSize="9" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="⊙" Width="32" Height="32" Margin="0,0,4,0" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="None" FontSize="14" Click="SymmetryNone_Click"/>
+                    <Button Content="↔" Width="32" Height="32" Margin="0,0,4,0" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Horizontal" FontSize="14" Click="SymmetryHorizontal_Click"/>
+                    <Button Content="↕" Width="32" Height="32" Margin="0,0,4,0" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Vertical" FontSize="14" Click="SymmetryVertical_Click"/>
+                    <Button Content="✛" Width="32" Height="32" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Both" FontSize="14" Click="SymmetryBoth_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Layer List -->
+        <ListBox Grid.Row="2" ItemsSource="{Binding Layers}" SelectedItem="{Binding ActiveLayer}" 
+                 Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="#2D2D30" BorderBrush="#3E3E42" BorderThickness="0,0,0,1" Padding="6" Margin="0,1">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/> <!-- Visibility -->
+                                <ColumnDefinition Width="Auto"/> <!-- Preview -->
+                                <ColumnDefinition Width="*"/>    <!-- Name & Info -->
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Visibility Toggle -->
+                            <Button Grid.Column="0" Command="{Binding DataContext.ToggleVisibilityCommand, RelativeSource={RelativeSource AncestorType=ListBox}}" 
+                                    CommandParameter="{Binding}"
+                                    Width="20" Height="20" Background="Transparent" BorderThickness="0" 
+                                    Foreground="#AAAAAA" FontSize="14" Margin="0,0,6,0">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Content" Value="👁"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsVisible}" Value="False">
+                                                <Setter Property="Content" Value="○"/>
+                                                <Setter Property="Foreground" Value="#555555"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                            <!-- Preview Thumbnail -->
+                            <Border Grid.Column="1" Width="40" Height="40" Margin="0,0,8,0" 
+                                    Background="#1E1E1E" BorderBrush="#555555" BorderThickness="1">
+                                <Rectangle Fill="#333333"/>
+                                <!-- TODO: Add actual layer thumbnail rendering -->
+                            </Border>
+
+                            <!-- Layer Info -->
+                            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Name}" Foreground="#DDDDDD" FontSize="12" FontWeight="Medium"/>
+                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                    <TextBlock Text="Opacity: " Foreground="#888888" FontSize="9"/>
+                                    <TextBlock Text="{Binding Opacity, StringFormat=P0}" Foreground="#AAAAAA" FontSize="9"/>
+                                    <TextBlock Text="  |  " Foreground="#555555" FontSize="9" Margin="4,0"/>
+                                    <TextBlock Text="{Binding BlendMode}" Foreground="#888888" FontSize="9"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <Border Background="{TemplateBinding Background}" BorderThickness="0">
+                                    <ContentPresenter/>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#007ACC"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+
+        <!-- Layer Properties -->
+        <Border Grid.Row="3" Background="#252526" BorderBrush="#3E3E42" BorderThickness="0,1,0,1" Padding="8">
+            <StackPanel>
+                <!-- Opacity Slider -->
+                <Grid Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Opacity" Foreground="#AAAAAA" FontSize="10" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <Slider Grid.Column="1" Value="{Binding ActiveLayer.Opacity}" Minimum="0" Maximum="1" TickFrequency="0.01" 
+                            IsSnapToTickEnabled="True" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="2" Text="{Binding ActiveLayer.Opacity, StringFormat=P0}" Foreground="#DDDDDD" 
+                               FontSize="10" VerticalAlignment="Center" Margin="8,0,0,0" MinWidth="35" TextAlignment="Right"/>
+                </Grid>
+                
+                <!-- Blend Mode -->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Text="Blend" Foreground="#AAAAAA" FontSize="10" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <ComboBox Grid.Column="1" SelectedItem="{Binding ActiveLayer.BlendMode}" 
+                              ItemsSource="{Binding Source={StaticResource BlendModeEnum}}" 
+                              Background="#3E3E42" Foreground="#DDDDDD" BorderThickness="1" BorderBrush="#555555"/>
+                </Grid>
+            </StackPanel>
+        </Border>
+
+        <!-- Action Buttons -->
+        <Border Grid.Row="4" Background="#252526" Padding="8">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Command="{Binding AddLayerCommand}" Width="32" Height="32" Margin="2" 
+                        Background="#007ACC" Foreground="White" BorderThickness="0" ToolTip="Add Layer" FontWeight="Bold">
+                    <TextBlock Text="+" FontSize="18"/>
+                </Button>
+                <Button Command="{Binding RemoveLayerCommand}" CommandParameter="{Binding ActiveLayer}" 
+                        Width="32" Height="32" Margin="2" Background="#3E3E42" Foreground="White" 
+                        BorderThickness="0" ToolTip="Remove Layer" FontWeight="Bold">
+                    <TextBlock Text="−" FontSize="18"/>
+                </Button>
+                <Button Command="{Binding DuplicateLayerCommand}" CommandParameter="{Binding ActiveLayer}" 
+                        Width="32" Height="32" Margin="2" Background="#3E3E42" Foreground="White" 
+                        BorderThickness="0" ToolTip="Duplicate Layer">
+                    <TextBlock Text="⎘" FontSize="14"/>
+                </Button>
+                <Button Command="{Binding MergeDownCommand}" CommandParameter="{Binding ActiveLayer}" 
+                        Width="32" Height="32" Margin="2" Background="#3E3E42" Foreground="White" 
+                        BorderThickness="0" ToolTip="Merge Down">
+                    <TextBlock Text="⬊" FontSize="14"/>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>
