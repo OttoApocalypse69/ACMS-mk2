@@ -10,8 +10,11 @@ namespace PixelArtEditor.Core.Services
     public class LayerService : ILayerService
     {
         private Layer _activeLayer;
-        private readonly int _width;
-        private readonly int _height;
+        private int _width;
+        private int _height;
+
+        public int Width => _width;
+        public int Height => _height;
 
         public ObservableCollection<Layer> Layers { get; } = new ObservableCollection<Layer>();
 
@@ -108,6 +111,37 @@ namespace PixelArtEditor.Core.Services
         public void ClearLayer(Layer layer)
         {
             layer?.Bitmap.Erase(SKColors.Transparent);
+        }
+
+        public void Resize(int width, int height)
+        {
+            if (width <= 0 || height <= 0)
+            {
+                return;
+            }
+
+            if (width == _width && height == _height)
+            {
+                return;
+            }
+
+            _width = width;
+            _height = height;
+
+            foreach (var layer in Layers)
+            {
+                var oldBitmap = layer.Bitmap;
+                var newBitmap = new SKBitmap(width, height, SKColorType.Rgba8888, SKAlphaType.Premul);
+                newBitmap.Erase(SKColors.Transparent);
+
+                using (var canvas = new SKCanvas(newBitmap))
+                {
+                    canvas.DrawBitmap(oldBitmap, 0, 0);
+                }
+
+                layer.Bitmap = newBitmap;
+                oldBitmap.Dispose();
+            }
         }
     }
 }

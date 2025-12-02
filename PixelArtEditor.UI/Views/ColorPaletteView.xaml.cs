@@ -3,40 +3,60 @@ using SkiaSharp;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace PixelArtEditor.UI.Views
 {
     public partial class ColorPaletteView : UserControl
     {
         private bool _isUpdating = false;
+        private WriteableBitmap _svBitmap;
+        private float _h = 0f;
+        private float _s = 1f;
+        private float _v = 1f;
 
         public ColorPaletteView()
         {
             InitializeComponent();
+            Loaded += OnLoaded;
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            CreateOrUpdateSvBitmap();
+            if (DataContext is ColorPaletteViewModel vm)
+            {
+                if (vm.SelectedColor != SKColor.Empty)
+                {
+                    UpdateFromColor(vm.SelectedColor);
+                }
+                else
+                {
+                    UpdateFromColor(SKColors.White);
+                }
+            }
         }
 
         private void OnHueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             if (_isUpdating || DataContext == null) return;
-            UpdateColorFromHSV();
+            _h = (float)HueSlider.Value;
+            CreateOrUpdateSvBitmap();
+            UpdateViewModelColor();
         }
 
-        private void OnSaturationChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void OnSvMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (_isUpdating || DataContext == null) return;
-            UpdateColorFromHSV();
+            if (DataContext == null) return;
+            CaptureMouse();
+            UpdateSvFromMouse(e.GetPosition(SvImage));
         }
 
-        private void OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void OnSvMouseMove(object sender, MouseEventArgs e)
         {
-            if (_isUpdating || DataContext == null) return;
-            UpdateColorFromHSV();
-        }
-
-        private void OnRgbChanged(object sender, TextChangedEventArgs e)
-        {
-            if (_isUpdating || DataContext == null) return;
-            UpdateColorFromRGB();
+            if (!IsMouseCaptured || DataContext == null) return;
+            UpdateSvFromMouse(e.GetPosition(SvImage));
         }
 
         private void OnHexChanged(object sender, TextChangedEventArgs e)
@@ -49,44 +69,65 @@ namespace PixelArtEditor.UI.Views
         {
             if (DataContext is ColorPaletteViewModel vm && vm.SelectedColor != SKColor.Empty)
             {
-                UpdateControlsFromColor(vm.SelectedColor);
+                UpdateFromColor(vm.SelectedColor);
             }
         }
 
-        private void UpdateColorFromHSV()
+        private void UpdateSvFromMouse(Point p)
         {
-            float h = (float)HueSlider.Value;
-            float s = (float)SaturationSlider.Value / 100f;
-            float v = (float)ValueSlider.Value / 100f;
+            double width = SvImage.ActualWidth;
+            double height = SvImage.ActualHeight;
+            if (width <= 0 || height <= 0) return;
 
-            var color = SKColor.FromHsv(h, s * 100, v * 100);
-            
+            _s = (float)Math.Clamp(p.X / width, 0, 1);
+            _v = (float)Math.Clamp(1.0 - (p.Y / height), 0, 1);
+
+            UpdateMarkerPosition();
+            UpdateViewModelColor();
+        }
+
+        private void UpdateViewModelColor()
+        {
+            var color = SKColor.FromHsv(_h, _s * 100f, _v * 100f);
+
             _isUpdating = true;
             if (DataContext is ColorPaletteViewModel vm)
             {
                 vm.SelectedColor = color;
             }
-            UpdateRGBFromColor(color);
             UpdateHexFromColor(color);
             _isUpdating = false;
         }
 
-        private void UpdateColorFromRGB()
+        private void CreateOrUpdateSvBitmap()
         {
-            if (!byte.TryParse(RedBox.Text, out byte r)) r = 0;
-            if (!byte.TryParse(GreenBox.Text, out byte g)) g = 0;
-            if (!byte.TryParse(BlueBox.Text, out byte b)) b = 0;
+            int width = (int)Math.Max(1, SvImage.ActualWidth > 0 ? SvImage.ActualWidth : 140);
+            int height = (int)Math.Max(1, SvImage.ActualHeight > 0 ? SvImage.ActualHeight : 140);
 
-            var color = new SKColor(r, g, b);
-            
-            _isUpdating = true;
-            if (DataContext is ColorPaletteViewModel vm)
+            _svBitmap = new WriteableBitmap(width, height, 96, 96, System.Windows.Media.PixelFormats.Bgra32, null);
+
+            int stride = width * 4;
+            byte[] pixels = new byte[height * stride];
+
+            for (int y = 0; y < height; y++)
             {
-                vm.SelectedColor = color;
+                float v = 1f - (float)y / (height - 1);
+                for (int x = 0; x < width; x++)
+                {
+                    float s = (float)x / (width - 1);
+                    var c = SKColor.FromHsv(_h, s * 100f, v * 100f);
+                    int index = y * stride + x * 4;
+                    pixels[index + 0] = c.Blue;
+                    pixels[index + 1] = c.Green;
+                    pixels[index + 2] = c.Red;
+                    pixels[index + 3] = c.Alpha;
+                }
             }
-            UpdateHSVFromColor(color);
-            UpdateHexFromColor(color);
-            _isUpdating = false;
+
+            _svBitmap.WritePixels(new Int32Rect(0, 0, width, height), pixels, stride, 0);
+            SvImage.Source = _svBitmap;
+
+            UpdateMarkerPosition();
         }
 
         private void UpdateColorFromHex()
@@ -100,43 +141,42 @@ namespace PixelArtEditor.UI.Views
                 var color = new SKColor(r, g, b);
                 
                 _isUpdating = true;
-                if (DataContext is ColorPaletteViewModel vm)
-                {
-                    vm.SelectedColor = color;
-                }
-                UpdateHSVFromColor(color);
-                UpdateRGBFromColor(color);
+                UpdateFromColor(color);
                 _isUpdating = false;
             }
         }
 
-        private void UpdateControlsFromColor(SKColor color)
-        {
-            _isUpdating = true;
-            UpdateHSVFromColor(color);
-            UpdateRGBFromColor(color);
-            UpdateHexFromColor(color);
-            _isUpdating = false;
-        }
-
-        private void UpdateHSVFromColor(SKColor color)
+        private void UpdateFromColor(SKColor color)
         {
             color.ToHsv(out float h, out float s, out float v);
-            HueSlider.Value = h;
-            SaturationSlider.Value = s;
-            ValueSlider.Value = v;
-        }
+            _h = h;
+            _s = s / 100f;
+            _v = v / 100f;
 
-        private void UpdateRGBFromColor(SKColor color)
-        {
-            RedBox.Text = color.Red.ToString();
-            GreenBox.Text = color.Green.ToString();
-            BlueBox.Text = color.Blue.ToString();
+            HueSlider.Value = _h;
+            CreateOrUpdateSvBitmap();
+            UpdateMarkerPosition();
+            UpdateHexFromColor(color);
         }
 
         private void UpdateHexFromColor(SKColor color)
         {
             HexBox.Text = $"{color.Red:X2}{color.Green:X2}{color.Blue:X2}";
+        }
+
+        private void UpdateMarkerPosition()
+        {
+            if (SvMarkerTransform == null || SvImage == null) return;
+
+            double width = SvImage.ActualWidth;
+            double height = SvImage.ActualHeight;
+            if (width <= 0 || height <= 0) return;
+
+            double x = _s * (width - 1);
+            double y = (1.0 - _v) * (height - 1);
+
+            SvMarkerTransform.X = x - SvMarker.Width / 2;
+            SvMarkerTransform.Y = y - SvMarker.Height / 2;
         }
     }
 }

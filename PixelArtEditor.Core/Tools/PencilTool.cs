@@ -10,6 +10,8 @@ namespace PixelArtEditor.Core.Tools
         public string Name => "Pencil";
         private bool _isDrawing;
         private SKBitmap _snapshot;
+        private int _lastX;
+        private int _lastY;
         private readonly IHistoryService _historyService;
         private readonly SymmetrySettings _symmetrySettings;
 
@@ -27,6 +29,8 @@ namespace PixelArtEditor.Core.Tools
             _snapshot = layer.Bitmap.Copy();
             
             _isDrawing = true;
+            _lastX = x;
+            _lastY = y;
             DrawPixel(layer, x, y, color);
         }
 
@@ -34,7 +38,9 @@ namespace PixelArtEditor.Core.Tools
         {
             if (_isDrawing && layer != null && !layer.IsLocked && layer.IsVisible)
             {
-                DrawPixel(layer, x, y, color);
+                DrawLine(layer, _lastX, _lastY, x, y, color);
+                _lastX = x;
+                _lastY = y;
             }
         }
 
@@ -94,6 +100,37 @@ namespace PixelArtEditor.Core.Tools
                             layer.Bitmap.SetPixel(mirrorX, mirrorY, color);
                         }
                     }
+                }
+            }
+        }
+
+        private void DrawLine(Layer layer, int x0, int y0, int x1, int y1, SKColor color)
+        {
+            int dx = Math.Abs(x1 - x0);
+            int dy = Math.Abs(y1 - y0);
+            int sx = x0 < x1 ? 1 : -1;
+            int sy = y0 < y1 ? 1 : -1;
+            int err = dx - dy;
+
+            int x = x0;
+            int y = y0;
+
+            while (true)
+            {
+                DrawPixel(layer, x, y, color);
+
+                if (x == x1 && y == y1) break;
+
+                int e2 = 2 * err;
+                if (e2 > -dy)
+                {
+                    err -= dy;
+                    x += sx;
+                }
+                if (e2 < dx)
+                {
+                    err += dx;
+                    y += sy;
                 }
             }
         }

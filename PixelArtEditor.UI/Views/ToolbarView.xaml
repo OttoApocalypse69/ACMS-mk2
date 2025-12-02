@@ -21,7 +21,7 @@
         <ListBox Grid.Row="1" ItemsSource="{Binding Tools}" SelectedItem="{Binding ActiveTool}" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Center">
             <ListBox.Resources>
                 <Style x:Key="ToolIconStyle" TargetType="Path">
-                    <Setter Property="Fill" Value="White"/>
+                    <Setter Property="Fill" Value="#E0E4FF"/>
                     <Setter Property="Stretch" Value="Uniform"/>
                     <Setter Property="Width" Value="20"/>
                     <Setter Property="Height" Value="20"/>
@@ -31,7 +31,7 @@
             </ListBox.Resources>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="#333337" CornerRadius="4" Margin="2" Padding="6" Width="36" Height="36" ToolTip="{Binding Name}">
+                    <Border Background="#252933" CornerRadius="8" Margin="4" Padding="6" Width="40" Height="40" ToolTip="{Binding Name}">
                         <ContentControl>
                             <ContentControl.Style>
                                 <Style TargetType="ContentControl">
@@ -68,6 +68,20 @@
                                             <Setter Property="Content">
                                                 <Setter.Value>
                                                     <Path Data="{StaticResource SelectIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Name}" Value="Line">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource LineIcon}" Style="{StaticResource ToolIconStyle}"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Name}" Value="Rectangle">
+                                            <Setter Property="Content">
+                                                <Setter.Value>
+                                                    <Path Data="{StaticResource RectangleIcon}" Style="{StaticResource ToolIconStyle}"/>
                                                 </Setter.Value>
                                             </Setter>
                                         </DataTrigger>

@@ -24,7 +24,7 @@
         <!-- Symmetry Panel -->
         <Border Grid.Row="1" Background="#252526" BorderBrush="#3E3E42" BorderThickness="0,0,0,1" Padding="8">
             <StackPanel>
-                <TextBlock Text="SYMMETRY" Foreground="#AAAAAA" FontSize="9" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                <TextBlock Text="SYMMETRY" Foreground="#AAAAAA" FontSize="9" FontWeight="SemiBold" Margin="0,4,0,4"/>
                 <StackPanel Orientation="Horizontal">
                     <Button Content="⊙" Width="32" Height="32" Margin="0,0,4,0" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="None" FontSize="14" Click="SymmetryNone_Click"/>
                     <Button Content="↔" Width="32" Height="32" Margin="0,0,4,0" Background="#3E3E42" Foreground="White" BorderThickness="0" ToolTip="Horizontal" FontSize="14" Click="SymmetryHorizontal_Click"/>

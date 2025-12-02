@@ -56,3 +56,4 @@ C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\ref
 C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.pdb
 C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.genruntimeconfig.cache
 C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\ref\PixelArtEditor.UI.dll
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.sourcelink.json

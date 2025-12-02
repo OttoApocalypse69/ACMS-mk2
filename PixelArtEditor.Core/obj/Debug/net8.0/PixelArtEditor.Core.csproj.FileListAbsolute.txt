@@ -22,3 +22,4 @@ C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtE
 C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\refint\PixelArtEditor.Core.dll
 C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.pdb
 C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\ref\PixelArtEditor.Core.dll
+C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.Core\obj\Debug\net8.0\PixelArtEditor.Core.sourcelink.json

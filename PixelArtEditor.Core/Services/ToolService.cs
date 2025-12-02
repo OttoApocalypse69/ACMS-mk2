@@ -26,7 +26,9 @@ namespace PixelArtEditor.Core.Services
                 new EraserTool(historyService),
                 new EyedropperTool(TriggerColorPicked),
                 new FillTool(historyService),
-                new RectangleSelectTool()
+                new RectangleSelectTool(),
+                new LineTool(historyService, SymmetrySettings),
+                new RectangleTool(historyService, SymmetrySettings)
             };
             
             // Default tool

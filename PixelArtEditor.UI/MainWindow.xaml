@@ -6,17 +6,95 @@
         xmlns:local="clr-namespace:PixelArtEditor.UI"
         xmlns:views="clr-namespace:PixelArtEditor.UI.Views"
         mc:Ignorable="d"
-        Title="PixelForge" Height="768" Width="1024"
-        Background="#1E1E1E" WindowStartupLocation="CenterScreen">
+        Title="ACMS mk2" Height="768" Width="1180"
+        Background="#18181C" WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI" FontSize="12">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="36"/>  <!-- Top command bar -->
+            <RowDefinition Height="*"/>   <!-- Main content -->
         </Grid.RowDefinitions>
+
+        <!-- Top Command Bar -->
+        <Border Grid.Row="0" Background="#20232A" BorderBrush="#2C2F36" BorderThickness="0,0,0,1">
+            <Grid Margin="10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>  <!-- App title -->
+                    <ColumnDefinition Width="Auto"/>  <!-- Menu bar -->
+                    <ColumnDefinition Width="*"/>     <!-- Spacer -->
+                    <ColumnDefinition Width="Auto"/>  <!-- Zoom indicator -->
+                </Grid.ColumnDefinitions>
+
+                <!-- App title -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,16,0">
+                    <TextBlock Text="ACMS mk2" Foreground="#FFFFFF" FontWeight="SemiBold" FontSize="14"/>
+                    <TextBlock Text="  ·  Sprite Editor" Foreground="#8A8D93" FontSize="12"/>
+                </StackPanel>
+
+                <!-- Menu bar -->
+                <Menu Grid.Column="1" Background="Transparent" BorderThickness="0" Foreground="#C5CAE9"
+                      VerticalAlignment="Center" FontSize="12">
+                    <Menu.Resources>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Padding" Value="10,4"/>
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="Foreground" Value="#C5CAE9"/>
+                            <Setter Property="OverridesDefaultStyle" Value="True"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="MenuItem">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="3">
+                                            <ContentPresenter ContentSource="Header" Margin="2,0"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsHighlighted" Value="True">
+                                                <Setter Property="Background" Value="#323744"/>
+                                            </Trigger>
+                                            <Trigger Property="IsSubmenuOpen" Value="True">
+                                                <Setter Property="Background" Value="#3C4254"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Menu.Resources>
+
+                    <MenuItem Header="File">
+                        <MenuItem Header="_New" Command="{Binding NewDocumentCommand}"/>
+                        <MenuItem Header="_Open..." Command="{Binding OpenDocumentCommand}"/>
+                        <Separator/>
+                        <MenuItem Header="_Import..." Command="{Binding ImportImageCommand}"/>
+                        <Separator/>
+                        <MenuItem Header="_Save" Command="{Binding SaveDocumentCommand}"/>
+                        <MenuItem Header="E_xport PNG..." Command="{Binding LayerViewModel.ExportCanvasCommand}"/>
+                        <Separator/>
+                        <MenuItem Header="Canvas Size">
+                            <MenuItem Header="16 x 16" Command="{Binding LayerViewModel.ResizeCanvas16Command}"/>
+                            <MenuItem Header="32 x 32" Command="{Binding LayerViewModel.ResizeCanvas32Command}"/>
+                            <MenuItem Header="64 x 64" Command="{Binding LayerViewModel.ResizeCanvas64Command}"/>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="E_xit" Command="{Binding ExitApplicationCommand}"/>
+                    </MenuItem>
+
+                    <MenuItem Header="Edit">
+                        <MenuItem Header="Undo" Command="{Binding ToolbarViewModel.UndoCommand}"/>
+                        <MenuItem Header="Redo" Command="{Binding ToolbarViewModel.RedoCommand}"/>
+                    </MenuItem>
+                </Menu>
+
+                <!-- Zoom indicator placeholder -->
+                <Border Grid.Column="3" CornerRadius="4" Background="#2B2F37" Padding="8,4" Margin="0,0,4,0" VerticalAlignment="Center">
+                    <TextBlock Text="Zoom 100%" Foreground="#CED0D6"/>
+                </Border>
+            </Grid>
+        </Border>
         
         <!-- Main Content Area -->
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/> <!-- Toolbar -->
                 <ColumnDefinition Width="*"/>    <!-- Canvas -->
@@ -49,10 +127,6 @@
             </Grid>
         </Grid>
 
-        <!-- Bottom Splitter -->
-        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch" Background="#3E3E42"/>
-
-        <!-- Timeline -->
-        <views:TimelineView Grid.Row="2"/>
+        <!-- Timeline removed for now to keep UI clean until animation is implemented -->
     </Grid>
 </Window>
