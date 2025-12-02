@@ -1,19 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "NSbgthvLiMI=",
+  "dgSpecHash": "tYQysOYhAx0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\razva\\Documents\\ACMS mk2\\PixelArtEditor.UI\\PixelArtEditor.UI.csproj",
+  "projectFilePath": "/app/PixelArtEditor.UI/PixelArtEditor.UI.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\razva\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\10.0.0\\microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.0\\microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\opentk\\3.3.1\\opentk.3.3.1.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\opentk.glwpfcontrol\\3.3.0\\opentk.glwpfcontrol.3.3.0.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\skiasharp\\3.119.1\\skiasharp.3.119.1.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\skiasharp.nativeassets.macos\\3.119.1\\skiasharp.nativeassets.macos.3.119.1.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\skiasharp.nativeassets.win32\\3.119.1\\skiasharp.nativeassets.win32.3.119.1.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\skiasharp.views.desktop.common\\3.119.1\\skiasharp.views.desktop.common.3.119.1.nupkg.sha512",
-    "C:\\Users\\razva\\.nuget\\packages\\skiasharp.views.wpf\\3.119.1\\skiasharp.views.wpf.3.119.1.nupkg.sha512"
+    "/home/jules/.nuget/packages/communitytoolkit.mvvm/8.4.0/communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "/home/jules/.nuget/packages/microsoft.extensions.dependencyinjection/10.0.0/microsoft.extensions.dependencyinjection.10.0.0.nupkg.sha512",
+    "/home/jules/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/10.0.0/microsoft.extensions.dependencyinjection.abstractions.10.0.0.nupkg.sha512",
+    "/home/jules/.nuget/packages/opentk/3.3.1/opentk.3.3.1.nupkg.sha512",
+    "/home/jules/.nuget/packages/opentk.glwpfcontrol/3.3.0/opentk.glwpfcontrol.3.3.0.nupkg.sha512",
+    "/home/jules/.nuget/packages/skiasharp/3.119.1/skiasharp.3.119.1.nupkg.sha512",
+    "/home/jules/.nuget/packages/skiasharp.nativeassets.macos/3.119.1/skiasharp.nativeassets.macos.3.119.1.nupkg.sha512",
+    "/home/jules/.nuget/packages/skiasharp.nativeassets.win32/3.119.1/skiasharp.nativeassets.win32.3.119.1.nupkg.sha512",
+    "/home/jules/.nuget/packages/skiasharp.views.desktop.common/3.119.1/skiasharp.views.desktop.common.3.119.1.nupkg.sha512",
+    "/home/jules/.nuget/packages/skiasharp.views.wpf/3.119.1/skiasharp.views.wpf.3.119.1.nupkg.sha512",
+    "/home/jules/.nuget/packages/microsoft.windowsdesktop.app.ref/8.0.22/microsoft.windowsdesktop.app.ref.8.0.22.nupkg.sha512"
   ],
   "logs": [
     {

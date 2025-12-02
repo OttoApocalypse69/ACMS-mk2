@@ -8,7 +8,7 @@ namespace PixelArtEditor.Core.Tools
     {
         public string Name => "Eraser";
         private bool _isErasing;
-        private SKBitmap _snapshot;
+        private SKBitmap _snapshot = null!;
         private readonly IHistoryService _historyService;
 
         public EraserTool(IHistoryService historyService)
@@ -43,10 +43,9 @@ namespace PixelArtEditor.Core.Tools
                 
                 if (_snapshot != null)
                 {
-                    var command = new PixelArtEditor.Core.Commands.DrawCommand(layer, _snapshot, layer.Bitmap);
+                    var command = new PixelArtEditor.Core.Commands.DrawCommand(layer, _snapshot, layer.Bitmap.Copy());
                     _historyService.Push(command);
                     _snapshot.Dispose();
-                    _snapshot = null;
                 }
             }
         }

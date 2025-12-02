@@ -9,7 +9,7 @@ namespace PixelArtEditor.Core.Services
 {
     public class LayerService : ILayerService
     {
-        private Layer _activeLayer;
+        private Layer _activeLayer = null!;
         private int _width;
         private int _height;
 
@@ -18,7 +18,7 @@ namespace PixelArtEditor.Core.Services
 
         public ObservableCollection<Layer> Layers { get; } = new ObservableCollection<Layer>();
 
-        public Layer ActiveLayer
+        public Layer? ActiveLayer
         {
             get => _activeLayer;
             set

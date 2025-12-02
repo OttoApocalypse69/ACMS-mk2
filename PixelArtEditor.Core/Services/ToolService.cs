@@ -13,7 +13,7 @@ namespace PixelArtEditor.Core.Services
         public IHistoryService HistoryService { get; }
         public SymmetrySettings SymmetrySettings { get; }
         
-        public event System.Action<SkiaSharp.SKColor> ColorPicked;
+        public event System.Action<SkiaSharp.SKColor>? ColorPicked;
 
         public ToolService(IHistoryService historyService)
         {
@@ -24,6 +24,8 @@ namespace PixelArtEditor.Core.Services
             {
                 new PencilTool(historyService, SymmetrySettings),
                 new EraserTool(historyService),
+                new BlurTool(historyService),
+                new TextTool(historyService),
                 new EyedropperTool(TriggerColorPicked),
                 new FillTool(historyService),
                 new RectangleSelectTool(),

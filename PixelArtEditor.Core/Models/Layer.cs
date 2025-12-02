@@ -19,11 +19,11 @@ namespace PixelArtEditor.Core.Models
 
     public class Layer : INotifyPropertyChanged
     {
-        private string _name;
+        private string _name = null!;
         private bool _isVisible = true;
         private double _opacity = 1.0;
         private BlendMode _blendMode = BlendMode.Normal;
-        private SKBitmap _bitmap;
+        private SKBitmap _bitmap = null!;
         private bool _isLocked;
 
         public string Name
@@ -70,9 +70,9 @@ namespace PixelArtEditor.Core.Models
             Bitmap.Erase(SKColors.Transparent);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

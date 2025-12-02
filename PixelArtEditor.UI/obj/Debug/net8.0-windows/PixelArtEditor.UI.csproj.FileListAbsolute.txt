@@ -1,59 +1,59 @@
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.csproj.AssemblyReference.cache
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\CanvasView.baml
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\CanvasView.g.cs
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\ColorPaletteView.g.cs
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\App.g.cs
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI_MarkupCompile.cache
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI_MarkupCompile.lref
-C:\Users\razva\.gemini\antigravity\playground\fractal-corona\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\ToolbarView.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.UI.exe
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.UI.deps.json
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.UI.runtimeconfig.json
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.UI.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.UI.pdb
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\OpenTK.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\GLWpfControl.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\SkiaSharp.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\SkiaSharp.Views.Desktop.Common.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\SkiaSharp.Views.WPF.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\runtimes\osx\native\libSkiaSharp.dylib
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\runtimes\win-arm64\native\libSkiaSharp.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\runtimes\win-x64\native\libSkiaSharp.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\runtimes\win-x86\native\libSkiaSharp.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.Core.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\bin\Debug\net8.0-windows\PixelArtEditor.Core.pdb
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.csproj.AssemblyReference.cache
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\CanvasView.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\TimelineView.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\CanvasView.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\ColorPaletteView.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\LayerPanelView.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\TimelineView.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\ToolbarView.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\App.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI_MarkupCompile.cache
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI_MarkupCompile.lref
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\App.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\MainWindow.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\ColorPaletteView.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\LayerPanelView.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\Views\ToolbarView.baml
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.g.resources
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.AssemblyInfoInputs.cache
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.AssemblyInfo.cs
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.csproj.CoreCompileInputs.cache
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArt.8B177725.Up2Date
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\refint\PixelArtEditor.UI.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.pdb
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.genruntimeconfig.cache
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\ref\PixelArtEditor.UI.dll
-C:\Users\razva\Documents\ACMS mk2\PixelArtEditor.UI\obj\Debug\net8.0-windows\PixelArtEditor.UI.sourcelink.json
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.csproj.AssemblyReference.cache
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/CanvasView.baml
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/MainWindow.g.cs
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/CanvasView.g.cs
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/ColorPaletteView.g.cs
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/App.g.cs
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/GeneratedInternalTypeHelper.g.cs
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI_MarkupCompile.cache
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI_MarkupCompile.lref
+C:/Users/razva/.gemini/antigravity/playground/fractal-corona/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/ToolbarView.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.UI.exe
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.UI.deps.json
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.UI.runtimeconfig.json
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.UI.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.UI.pdb
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/CommunityToolkit.Mvvm.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/Microsoft.Extensions.DependencyInjection.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/OpenTK.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/GLWpfControl.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/SkiaSharp.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/SkiaSharp.Views.Desktop.Common.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/SkiaSharp.Views.WPF.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/runtimes/osx/native/libSkiaSharp.dylib
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/runtimes/win-arm64/native/libSkiaSharp.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/runtimes/win-x64/native/libSkiaSharp.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/runtimes/win-x86/native/libSkiaSharp.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.Core.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/bin/Debug/net8.0-windows/PixelArtEditor.Core.pdb
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.csproj.AssemblyReference.cache
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/CanvasView.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/TimelineView.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/MainWindow.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/CanvasView.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/ColorPaletteView.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/LayerPanelView.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/TimelineView.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/ToolbarView.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/App.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/GeneratedInternalTypeHelper.g.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI_MarkupCompile.cache
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI_MarkupCompile.lref
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/App.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/MainWindow.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/ColorPaletteView.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/LayerPanelView.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/Views/ToolbarView.baml
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.g.resources
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.AssemblyInfoInputs.cache
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.AssemblyInfo.cs
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.csproj.CoreCompileInputs.cache
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArt.8B177725.Up2Date
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/refint/PixelArtEditor.UI.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.pdb
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.genruntimeconfig.cache
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/ref/PixelArtEditor.UI.dll
+C:/Users/razva/Documents/ACMS mk2/PixelArtEditor.UI/obj/Debug/net8.0-windows/PixelArtEditor.UI.sourcelink.json
