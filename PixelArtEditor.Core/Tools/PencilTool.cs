@@ -10,13 +10,13 @@ namespace PixelArtEditor.Core.Tools
         public string Name => "Pencil";
         public int Size { get; set; } = 1;
         private bool _isDrawing;
-        private SKBitmap _snapshot;
+        private SKBitmap _snapshot = null!;
         private int _lastX;
         private int _lastY;
         private readonly IHistoryService _historyService;
-        private readonly SymmetrySettings _symmetrySettings;
+        private readonly SymmetrySettings? _symmetrySettings;
 
-        public PencilTool(IHistoryService historyService, SymmetrySettings symmetrySettings = null)
+        public PencilTool(IHistoryService historyService, SymmetrySettings? symmetrySettings = null)
         {
             _historyService = historyService;
             _symmetrySettings = symmetrySettings;
@@ -54,10 +54,9 @@ namespace PixelArtEditor.Core.Tools
                 // Create command with snapshot and current state
                 if (_snapshot != null)
                 {
-                    var command = new PixelArtEditor.Core.Commands.DrawCommand(layer, _snapshot, layer.Bitmap);
+                    var command = new PixelArtEditor.Core.Commands.DrawCommand(layer, _snapshot, layer.Bitmap.Copy());
                     _historyService.Push(command);
                     _snapshot.Dispose();
-                    _snapshot = null;
                 }
             }
         }

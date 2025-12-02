@@ -12,7 +12,7 @@ namespace PixelArtEditor.Core.Tools
         private SKPointI _startPoint;
         private SKPointI _endPoint;
         
-        public event Action<SKRectI> SelectionChanged;
+        public event Action<SKRectI>? SelectionChanged;
 
         public void OnMouseDown(Layer layer, int x, int y, SKColor color)
         {

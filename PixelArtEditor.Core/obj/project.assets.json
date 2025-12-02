@@ -169,19 +169,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\razva\\.nuget\\packages\\": {}
+    "/home/jules/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\razva\\Documents\\ACMS mk2\\PixelArtEditor.Core\\PixelArtEditor.Core.csproj",
+      "projectUniqueName": "/app/PixelArtEditor.Core/PixelArtEditor.Core.csproj",
       "projectName": "PixelArtEditor.Core",
-      "projectPath": "C:\\Users\\razva\\Documents\\ACMS mk2\\PixelArtEditor.Core\\PixelArtEditor.Core.csproj",
-      "packagesPath": "C:\\Users\\razva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\razva\\Documents\\ACMS mk2\\PixelArtEditor.Core\\obj\\",
+      "projectPath": "/app/PixelArtEditor.Core/PixelArtEditor.Core.csproj",
+      "packagesPath": "/home/jules/.nuget/packages/",
+      "outputPath": "/app/PixelArtEditor.Core/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\razva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/jules/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -231,7 +231,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/jules/.dotnet/sdk/8.0.416/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

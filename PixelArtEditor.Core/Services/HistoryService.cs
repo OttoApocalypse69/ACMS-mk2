@@ -9,7 +9,7 @@ namespace PixelArtEditor.Core.Services
         private readonly Stack<ICommand> _undoStack = new Stack<ICommand>();
         private readonly Stack<ICommand> _redoStack = new Stack<ICommand>();
 
-        public event Action HistoryChanged;
+        public event Action? HistoryChanged;
 
         public bool CanUndo => _undoStack.Count > 0;
         public bool CanRedo => _redoStack.Count > 0;
